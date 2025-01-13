@@ -59,7 +59,7 @@
             <div>
               <p class="font-bold text-2xl text-tertiary mb-2">As a human being</p>
               <p class="text-sm md:text-base text-dark dark:text-white mb-2">I play lots of video games. I'm a huge fan of Pokemon, Witcher, Legend of Zelda, and DotA.</p>
-              <p class="text-sm md:text-base text-dark dark:text-white mb-2">I drink a lot during parties/celebrations and I like getting wasted.</p>
+              <p class="text-sm md:text-base text-dark dark:text-white mb-2">I drink a lot during parties and celebrations until I get wasted.</p>
               <p class="text-sm md:text-base text-dark dark:text-white">Since technology never stops evolving, I always keep myself updated by trying out new tech stacks every now and then.</p>
             </div>
           </div>

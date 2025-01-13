@@ -80,7 +80,7 @@
         { name: 'MySQL', filename: 'mysql.svg' },
         { name: 'Redis', filename: 'redis.svg' },
         { name: 'AdonisJS', filename: 'adonis.svg' },
-        { name: 'OctoberCMS', filename: 'octobercms.svg', learning: true },
+        { name: 'OctoberCMS', filename: 'octobercms.svg' },
         { name: 'NestJS', filename: 'nestjs.svg', learning: true },
       ]
     },

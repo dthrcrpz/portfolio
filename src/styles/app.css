@@ -108,3 +108,8 @@ p, h1, h2 {
 .a-link {
   @apply text-primary
 }
+
+.contact-form {
+  max-width: 900px;
+  width: 100%;
+}

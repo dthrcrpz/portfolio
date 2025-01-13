@@ -8,7 +8,7 @@
       <p>Wanna talk? Message me and I'll get back to you as soon as I can</p>
     </div>
 
-    <form class="mt-10" use:form>
+    <form class="mt-10 contact-form mx-auto" use:form>
       <div class="flex two-cols flex-wrap justify-between">
         <div class="form-group">
           <label class="block mb-2" for="first-name">First Name: <span class="text-tertiary">*</span></label>
