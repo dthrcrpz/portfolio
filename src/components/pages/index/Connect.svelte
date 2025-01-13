@@ -117,8 +117,6 @@
     onSubmit(values, context) {
       loading = true
 
-      console.log(import.meta.env.PUBLIC_EMAILJS_KEY);
-
       var data = {
         service_id: import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
         template_id: import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
