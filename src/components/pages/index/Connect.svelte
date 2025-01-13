@@ -128,7 +128,7 @@
         }
       };
 
-      Inquiry.send(values).then(res => {
+      Inquiry.send(data).then(res => {
         reset()
         submitted = true
       }).catch(err => {
