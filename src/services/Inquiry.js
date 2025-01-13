@@ -1,8 +1,8 @@
-import { api } from "./_api"
+import { api } from "./_emailjs_api"
 
 class Inquiry {
-  add (data) {
-    return api.post('inquiries', data)
+  send (data) {
+    return api.post('email/send', data)
   }
 }
 

@@ -11,23 +11,13 @@
     <form class="mt-10 contact-form mx-auto" use:form>
       <div class="flex two-cols flex-wrap justify-between">
         <div class="form-group">
-          <label class="block mb-2" for="first-name">First Name: <span class="text-tertiary">*</span></label>
-          <input type="text" id="first-name" name="first_name" placeholder="Your first name" class="form-control">
-          {#if $errors.first_name}
-            <span class="validation-errors" transition:fade={{ duration: 300 }}>{ $errors.first_name }</span>
+          <label class="block mb-2" for="full-name">Name: <span class="text-tertiary">*</span></label>
+          <input type="text" id="full-name" name="name" placeholder="Your full name" class="form-control">
+          {#if $errors.name}
+            <span class="validation-errors" transition:fade={{ duration: 300 }}>{ $errors.name }</span>
           {/if}
         </div>
         
-        <div class="form-group">
-          <label class="block mb-2" for="last-name">Last Name: <span class="text-tertiary">*</span></label>
-          <input type="text" id="last-name" name="last_name" placeholder="Your last name" class="form-control">
-          {#if $errors.last_name}
-            <span class="validation-errors" transition:fade={{ duration: 300 }}>{ $errors.last_name }</span>
-          {/if}
-        </div>
-      </div>
-
-      <div class="flex two-cols flex-wrap justify-between">
         <div class="form-group">
           <label class="block mb-2" for="email">Email: <span class="text-tertiary">*</span></label>
           <input type="text" id="email" name="email" placeholder="Your email" class="form-control">
@@ -46,8 +36,8 @@
       </div>
 
       <div class="flex justify-between items-start">
-        <div class="thanks text-tertiary text-lg">
-          {#if submited}
+        <div class="thanks text-primary text-lg">
+          {#if submitted}
             <p transition:fade={{ duration: 300 }}>Thank you for sending a message! I'll do my best to get back to you as soon as I can.</p>
           {/if}
         </div>
@@ -109,28 +99,40 @@
 
   /* data */
   let loading = false
-  let submited = false
+  let submitted = false
 
   const schema = yup.object({
-    first_name: yup.string().required('First name is required'),
-    last_name: yup.string().required('Last name is required'),
+    name: yup.string().required('Name is required'),
     email: yup.string().required('Email is required').email('Invalid email address'),
     message: yup.string().required('Message is required')
   })
 
   const { form, errors, isValid, reset } = createForm({
     initialValues: {
-      first_name: '',
-      last_name: '',
+      name: '',
       email: '',
       message: ''
     },
     extend: validator({ schema }),
     onSubmit(values, context) {
       loading = true
-      Inquiry.add(values).then(res => {
+
+      console.log(import.meta.env.PUBLIC_EMAILJS_KEY);
+
+      var data = {
+        service_id: import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
+        template_id: import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
+        user_id: import.meta.env.PUBLIC_EMAILJS_KEY,
+        template_params: {
+          name: values.name,
+          email: values.email,
+          message: values.message,
+        }
+      };
+
+      Inquiry.send(values).then(res => {
         reset()
-        submited = true
+        submitted = true
       }).catch(err => {
         console.log(err)
       }).then(() => {
